@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Map</title>
+  <script type="text/javascript" src="https://assets.law360news.com/1531000/1531923/d3.v5.min.js"></script>
+  <script type="text/javascript" src="offset.js" defer></script>
+  <script src="https://assets.law360news.com/1531000/1531923/numeral.min.js"></script>
+  <script src="https://assets.law360news.com/1531000/1531923/topojson.v2.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  </link>
+  <link rel="stylesheet" href="https://static.law360news.com/201909/assets/responsive-next-32ff265ae0f6b45b6915cb7a719db907337029c2785605cef88fffa548aadd9e.css">
+  </link>
+</head>
+
+<body>
+  <div id="article-body">
+    <div class="d3-container" id="intermediate-map">
+      <span class='hed'>Shipping Trends</span>
+      <p class="dek">Ocean cargo shipments have surged since slowing dramatically during COVID-19 lockdowns in 2020, but delays at the leading U.S. ports of entry in Los Angeles and Long Beach, Calif., have prompted ocean carriers to reroute some
+        cargo to eastern U.S. ports. (Measured in twenty-foot equivalent units, which equal the volume of a 20-foot shipping container.)</p>
+      <div class="toggle-container">
+        <p style="width:100%;text-align:center;margin-bottom:5px;font-size:10pt;">Click to toggle between viewing <strong style="white-space:nowrap;" class="toggle all active">all seats</strong> or <strong style="white-space:nowrap;"
+            class="toggle up">just the
+            ones up
+            for
+            election this year</strong>.</p>
+        <span></span>
+      </div>
+      <div class="chart-header" style="display:flex;align-items:center;">
+        <span class="value" style="width:175px;text-align:left;display:inline-block;padding-left:10px;">Seats up for election out of total</span>
+        <span class="legend" style="flex-wrap: wrap">
+
+          <span class='year not-contested'><span style="background-color:#ed6a5a;color:white;">Not contested</span></span>
+          <span class='year contested'><span style="background-color:#6ba292;color:white;">Contested</span></span>
+          <span class='year not-up'><span style="background-color:#d3d3d3;color:black;">Not up for election</span></span>
+
+        </span>
+      </div>
+      <div class="chart-bar">
+      </div>
+
+
+      <span class="bottom"><span class="source">Source: U.S. Department of Transportation, Bureau of Transportation Statistics analysis</span><span class="gfx-logo"><img src="https://assets.law360news.com/1531000/1531923/law360_rea-logo@2x.png"
+            style="width:100%;" /></span></span>
+    </div>
+    <!-- <script type="text/javascript" src="intermediate.js" defer></script> -->
+    <script type="text/javascript" src="intermediate-bar.js" defer></script>
+    <br /><br />
+    <div class="d3-container" id="supreme-map">
+      <span class='hed'>Shipping Trends</span>
+      <p class="dek">Ocean cargo shipments have surged since slowing dramatically during COVID-19 lockdowns in 2020, but delays at the leading U.S. ports of entry in Los Angeles and Long Beach, Calif., have prompted ocean carriers to reroute some
+        cargo to eastern U.S. ports. (Measured in twenty-foot equivalent units, which equal the volume of a 20-foot shipping container.)</p>
+      <div class="chart">
+      </div>
+      <p style="width:100%;text-align:center;font-weight:bold;margin-bottom:5px;font-size:10pt;">Click a month to visualize each port's shipping volume for that month.</p>
+      <div class="legend">
+
+
+        <span class='year-legend yr-2019'><span style="background-color:#faa916;color:black;">July 2019</span></span>
+        <span class='year-legend yr-2020'><span style="background-color:#6ba292;color:white;">July 2020</span></span>
+        <span class='year-legend yr-2021'><span style="background-color:#654f6f;color:white;">July 2021</span></span>
+        <span class='year-legend yr-2022 active'><span style="background-color:#ed6a5a;color:white;">July 2022</span></span>
+
+      </div>
+
+      <span class="bottom"><span class="source">Source: U.S. Department of Transportation, Bureau of Transportation Statistics analysis</span><span class="gfx-logo"><img src="https://assets.law360news.com/1531000/1531923/law360_rea-logo@2x.png"
+            style="width:100%;" /></span></span>
+    </div>
+    <!-- <script type="text/javascript" src="supreme.js" defer></script> -->
+  </div>
+</body>
+
+</html>
