@@ -112,6 +112,13 @@ d3.selectAll('#intermediate-map .toggle')
 
         return toggleSwitch === 'seats' ? `Seats up for election out of total` : `Contested seats out of seats up for election`
       })
+
+    d3.select('.year.not-up')
+      .style('display', () => {
+        let toggleSwitch = document.querySelector('#intermediate-map .toggle.active').className.includes('all') ? 'seats' : 'up'
+
+        return toggleSwitch === 'seats' ? `block` : `none`
+      })
     // .on('mous
   })
 
