@@ -3,7 +3,7 @@ var margin = {
   top: 10,
   right: 15,
   bottom: 30,
-  left: 60
+  left: 65
 }
 
 var winWidth = window.innerWidth
@@ -11,6 +11,27 @@ var regWidth = document.getElementById('intermediate-map').offsetWidth
 var height = 450;
 
 var tickNums = 5
+
+//Create svg4 element
+var barWidth = document.getElementById('intermediate-map').offsetWidth
+var rawWidth = document.getElementById('article-body').offsetWidth
+var w = rawWidth;
+var h = rawWidth * (2 / 3);
+
+// Add X scale
+var xScale = d3.scaleLinear()
+  .domain([0, 1])
+  .range([0, barWidth - margin.right - margin.left])
+
+// Define X axis and format tick marks
+var xAxis = d3.axisBottom(xScale)
+  .ticks(tickNums)
+  .tickFormat(d => d * 100 + '%')
+
+var xGrid = d3.axisBottom(xScale)
+  .tickSize(-height + (margin.top + margin.bottom), 0, 0)
+  .tickFormat("")
+  .ticks(tickNums)
 
 function wrapText(text, width) {
   text.each(function() {
