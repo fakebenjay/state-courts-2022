@@ -7,7 +7,7 @@ var tooltip3 = d3.select("#intermediate-map .chart-bar")
   .append('div')
   .style('visibility', 'hidden')
   .attr('class', 'my-tooltip')
-  .attr('id', 'tooltip')
+  .attr('id', 'intermediate-tooltip')
 
 var yScale3
 
@@ -133,10 +133,12 @@ function renderIntermediate() {
         .style('stroke', 'black')
         .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.contested / d[toggle])} ${yScale3.bandwidth()}` : '0')
         .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
-      // .on('mouseover mousemove', (d) => {
-      //   return mouseover(d)
-      // })
-      // .on('mouseout', mouseout)
+        .on('mouseover mousemove', (d) => {
+          return mouseover('intermediate', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('intermediate')
+        })
 
       svg3.selectAll("bars")
         .data(csv)
@@ -157,10 +159,12 @@ function renderIntermediate() {
         .style('stroke', 'black')
         .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.notContested / d[toggle])} ${yScale3.bandwidth()} ${xScale(d.notContested / d[toggle]) + yScale3.bandwidth() + 3} 0` : '0')
         .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
-      // .on('mouseover mousemove', (d) => {
-      //   return mouseover(d)
-      // })
-      // .on('mouseout', mouseout)
+        .on('mouseover mousemove', (d) => {
+          return mouseover('intermediate', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('intermediate')
+        })
 
       svg3.selectAll("bars")
         .data(csv)
@@ -182,10 +186,12 @@ function renderIntermediate() {
         .style('stroke', 'black')
         .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.notUp / d[toggle]) + yScale3.bandwidth() + xScale(d.notUp / d[toggle]) } ${yScale3.bandwidth()}` : '0')
         .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
-      // .on('mouseover mousemove', (d) => {
-      //   return mouseover(d)
-      // })
-      // .on('mouseout', mouseout)
+        .on('mouseover mousemove', (d) => {
+          return mouseover('intermediate', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('intermediate')
+        })
 
       svg3.selectAll("bars")
         .data(csv)
@@ -206,6 +212,12 @@ function renderIntermediate() {
         .attr('fill', 'black')
         .style('pointer-events', 'none')
         .style('font-weight', d => d.state === 'TOTAL' ? 'bold' : 'normal')
+        .on('mouseover mousemove', (d) => {
+          return mouseover('intermediate', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('intermediate')
+        })
 
       svg3.selectAll('bars')
         .data(csv)
@@ -254,6 +266,12 @@ function renderIntermediate() {
         //   .enter()
         .text((d) => {
           return `${d.up} of ${d.seats}`
+        })
+        .on('mouseover mousemove', (d) => {
+          return mouseover('intermediate', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('intermediate')
         })
       // .on('mouseover mousemove', (d) => {
       //   return mouseover(d)

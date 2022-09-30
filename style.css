@@ -65,8 +65,18 @@ svg {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.my-tooltip {
+.quit {
   text-align: center;
+  display: none;
+  cursor: default;
+  height: 0;
+  padding-left: 5px;
+  color: #999;
+  height: 1.2em
+}
+
+.my-tooltip {
+  text-align: left;
   color: black;
   padding: 10px;
   overflow: visible;
@@ -362,6 +372,12 @@ strong.trial.upcoming {
     font-size: 10pt;
   }
 
+  .quit {
+    float: left;
+    display: inline;
+    width: 2%;
+  }
+
   .my-tooltip {
     box-sizing: border-box;
     box-sizing: -webkit-border-box;
@@ -369,7 +385,6 @@ strong.trial.upcoming {
     min-width: 100%;
     position: relative !important;
     overflow: auto;
-    margin-bottom: 30px;
     text-align: center;
     border-radius: 0px !important;
   }

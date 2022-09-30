@@ -7,7 +7,7 @@ var tooltip4 = d3.select("#supreme-map .chart-bar")
   .append('div')
   .style('visibility', 'hidden')
   .attr('class', 'my-tooltip')
-  .attr('id', 'tooltip')
+  .attr('id', 'supreme-tooltip')
 
 var yScale4
 
@@ -137,10 +137,12 @@ function renderSupreme() {
         .style('stroke', 'black')
         .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.contested / d[toggle])} ${yScale4.bandwidth()}` : '0')
         .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
-      // .on('mouseover mousemove', (d) => {
-      //   return mouseover(d)
-      // })
-      // .on('mouseout', mouseout)
+        .on('mouseover mousemove', (d) => {
+          return mouseover('supreme', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('supreme')
+        })
 
       svg4.selectAll("bars")
         .data(csv)
@@ -161,10 +163,12 @@ function renderSupreme() {
         .style('stroke', 'black')
         .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.notContested / d[toggle])} ${yScale4.bandwidth()} ${xScale(d.notContested / d[toggle]) + yScale4.bandwidth() + 3} 0` : '0')
         .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
-      // .on('mouseover mousemove', (d) => {
-      //   return mouseover(d)
-      // })
-      // .on('mouseout', mouseout)
+        .on('mouseover mousemove', (d) => {
+          return mouseover('supreme', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('supreme')
+        })
 
       svg4.selectAll("bars")
         .data(csv)
@@ -186,10 +190,12 @@ function renderSupreme() {
         .style('stroke', 'black')
         .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.notUp / d[toggle]) + yScale4.bandwidth() + xScale(d.notUp / d[toggle]) } ${yScale4.bandwidth()}` : '0')
         .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
-      // .on('mouseover mousemove', (d) => {
-      //   return mouseover(d)
-      // })
-      // .on('mouseout', mouseout)
+        .on('mouseover mousemove', (d) => {
+          return mouseover('supreme', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('supreme')
+        })
 
       svg4.selectAll("bars")
         .data(csv)
@@ -210,6 +216,12 @@ function renderSupreme() {
         .attr('fill', 'black')
         .style('pointer-events', 'none')
         .style('font-weight', d => d.state === 'TOTAL' ? 'bold' : 'normal')
+        .on('mouseover mousemove', (d) => {
+          return mouseover('supreme', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('supreme')
+        })
 
       svg4.selectAll('bars')
         .data(csv)
@@ -258,6 +270,12 @@ function renderSupreme() {
         //   .enter()
         .text((d) => {
           return `${d.up} of ${d.seats}`
+        })
+        .on('mouseover mousemove', (d) => {
+          return mouseover('supreme', d)
+        })
+        .on('mouseout', () => {
+          return mouseout('supreme')
         })
       // .on('mouseover mousemove', (d) => {
       //   return mouseover(d)
