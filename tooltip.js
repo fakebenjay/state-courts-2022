@@ -1,9 +1,9 @@
 function tooltipText(values, index) {
   return `<span class='quit'>x</span><div class="tooltip-container"><h2>${values.state}</h2>
-  <div>There are <strong>${values.up} ${index === 'intermediate' ? 'intermediate appellate':'state supreme court'}</strong> races this year.</div>
-  <div>Of those, <strong>${values.contested} are contested</strong> and <strong>${values.notContested} are not</strong>.</div>
+  <div>There are <strong style="padding:0;">${values.up} ${index === 'intermediate' ? 'intermediate appellate':'state supreme court'}</strong> races this year. Of those...</div><br/>
+  <div><strong style="background-color:#707c9c;color:white;font-size:12pt;">${values.contested == 0 ? 'None': values.contested} ${values.contested == 1 ? 'is':'are'} contested</strong><br/>${numeral(values.contested/values.up).format('0[.]0%')} of races, ${numeral(values.contested/values.seats).format('0[.]0%')} of seats.</div><br/><div><strong style="font-size:12pt;background-color:#d5563a;color:white;">${values.notContested == 0 ? 'None': values.notContested} ${values.notContested == 1 ? 'is':'are'} not contested</strong><br/>${numeral(values.notContested/values.up).format('0[.]0%')} of races, ${numeral(values.notContested/values.seats).format('0[.]0%')} of seats.</div>
   <br/>
-  <div>There are <strong>${values.seats} total ${index === 'intermediate' ? 'intermediate appellate':'state supreme court'} seats in the state.</strong></div>
+  <div>There are <strong style="padding:0;">${values.seats} total ${index === 'intermediate' ? 'intermediate appellate':'state supreme court'} seats</strong> in the state, which means <strong style="padding:0;">${numeral(values.up/values.seats).format('0[.]0%')} of them are up in non-retention elections</strong> this year.</div>
   </div>`
 }
 

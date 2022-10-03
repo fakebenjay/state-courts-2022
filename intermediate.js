@@ -25,7 +25,7 @@ var radCoeff = d3.scaleLinear()
 
 var color = d3.scaleOrdinal()
   .domain(['notUp', 'contested', 'notContested'])
-  .range(['#d3d3d3', '#6ba292', '#ed6a5a'])
+  .range(['#d3d3d3', '#707c9c', '#d5563a'])
 
 function radius(datum) {
   return radCoeff(rawWidth) * (Math.sqrt(datum) / document.querySelector('#article-body').offsetWidth)
@@ -69,7 +69,7 @@ function tooltipText(values) {
       </tr>
       <tr class="table-year yr-2020">
         <td class='yr'>July 2020</td>
-        <td class='bar'><span class="barfill" style="background-color:#6ba292;width:${(values.yr2020/935424)*100}%;text-align:right;"><span class="val val-in">${numeral(values.yr2020).format('0,0')}</span></span><span class="val val-out">${numeral(values.yr2020).format('0,0')}</span></td>
+        <td class='bar'><span class="barfill" style="background-color:#707c9c;width:${(values.yr2020/935424)*100}%;text-align:right;"><span class="val val-in">${numeral(values.yr2020).format('0,0')}</span></span><span class="val val-out">${numeral(values.yr2020).format('0,0')}</span></td>
       </tr>
       <tr class="table-year yr-2021">
         <td class='yr'>July 2021</td>
@@ -77,7 +77,7 @@ function tooltipText(values) {
       </tr>
       <tr class="table-year yr-2022">
         <td class='yr'>July 2022</td>
-        <td class='bar'><span class="barfill" style="background-color:#ed6a5a;width:${(values.yr2022/935424)*100}%;text-align:right;"><span class="val val-in">${numeral(values.yr2022).format('0,0')}</span></span><span class="val val-out">${numeral(values.yr2022).format('0,0')}</span></td>
+        <td class='bar'><span class="barfill" style="background-color:#d5563a;width:${(values.yr2022/935424)*100}%;text-align:right;"><span class="val val-in">${numeral(values.yr2022).format('0,0')}</span></span><span class="val val-out">${numeral(values.yr2022).format('0,0')}</span></td>
       </tr>
     </table>`
 }
@@ -243,7 +243,7 @@ d3.csv("https://assets.law360news.com/1531000/1531923/data.csv")
         //   .style('stroke-width', 1)
         //   .style('fill', () => {
         //     var activeClass = document.querySelector('.year-legend.active').classList[1].replaceAll('-', '')
-        //     return activeClass === 'yr2019' ? '#faa916' : activeClass === 'yr2020' ? '#6ba292' : activeClass === 'yr2021' ? '#654f6f' : '#ed6a5a'
+        //     return activeClass === 'yr2019' ? '#faa916' : activeClass === 'yr2020' ? '#707c9c' : activeClass === 'yr2021' ? '#654f6f' : '#d5563a'
         //   })
         //   .style('opacity', 1)
         //   .on('mouseover mousemove', (d) => {
@@ -368,7 +368,7 @@ d3.csv("https://assets.law360news.com/1531000/1531923/data.csv")
     //       })
     //       .style('fill', () => {
     //         var activeClass = document.querySelector('.year-legend.active').classList[1].replaceAll('-', '')
-    //         return activeClass === 'yr2019' ? '#faa916' : activeClass === 'yr2020' ? '#6ba292' : activeClass === 'yr2021' ? '#654f6f' : '#ed6a5a'
+    //         return activeClass === 'yr2019' ? '#faa916' : activeClass === 'yr2020' ? '#707c9c' : activeClass === 'yr2021' ? '#654f6f' : '#d5563a'
     //       })
     //   })
   })

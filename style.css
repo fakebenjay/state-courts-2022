@@ -22,12 +22,12 @@ svg {
 }
 
 .d3-container {
-  border-top: 6px solid #654f6f;
+  border-top: 6px solid #132a43;
   text-align: left;
   width: 100%;
   line-height: normal;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f3f4
+  background-color: white;
 }
 
 .pulse {
@@ -51,6 +51,7 @@ svg {
 .dek {
   margin-top: 0px;
   margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 10px;
   font-size: 11pt;
   font-family: Arial, Helvetica, sans-serif;
@@ -60,6 +61,7 @@ svg {
   display: block;
   padding-top: 10px;
   margin-left: 10px;
+  margin-right: 10px;
   font-size: 16pt;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
@@ -78,11 +80,10 @@ svg {
 .my-tooltip {
   text-align: left;
   color: black;
-  padding: 10px;
   overflow: visible;
   position: absolute;
-  width: 320px;
-  background-color: #f4f3f4;
+  width: 300px;
+  background-color: white;
   border-color: black;
   border-width: 1px;
   border-style: solid;
@@ -90,6 +91,10 @@ svg {
   font-family: Arial, Helvetica, sans-serif;
   z-index: 500;
   font-size: 10pt;
+}
+
+.tooltip-container {
+  padding: 10px;
 }
 
 .my-tooltip table {
@@ -198,6 +203,10 @@ svg {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.notes {
+  padding: 10px;
+}
+
 .bottom {
   width: 100%;
   position: relative;
@@ -215,7 +224,7 @@ svg {
   display: inline-block;
   width: 30%;
   text-align: right;
-  padding: 10px 20px;
+  padding: 5px 10px;
   position: absolute;
   bottom: 0;
   float: left;
@@ -281,11 +290,12 @@ svg {
 
 .toggle {
   cursor: default;
+  display: inline-block;
 }
 
 .toggle.active {
   color: white;
-  background-color: red;
+  background-color: #e8171f;
   padding: 2px 5px;
   border-radius: 3px;
   border: 1px solid black;
@@ -367,15 +377,23 @@ strong.trial.upcoming {
   }
 }
 
-@media screen and (max-width: 767px) {
-  text {
-    font-size: 10pt;
+@media screen and (min-width: 768px) {
+  .mobile {
+    display: none;
   }
+}
 
+@media screen and (max-width: 767px) {
   .quit {
     float: left;
     display: inline;
     width: 2%;
+  }
+
+  .mobile {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
   }
 
   .my-tooltip {

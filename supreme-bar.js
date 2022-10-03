@@ -33,9 +33,9 @@ d3.selectAll('#supreme-map .toggle')
       .style('stroke-dasharray', (d) => {
         let toggleSwitch = document.querySelector('#supreme-map .toggle.active').className.includes('all') ? 'seats' : 'up'
         if (toggleSwitch === 'seats') {
-          return d.state === 'TOTAL' ? `${xScale(d.contested / d[toggleSwitch])} ${yScale4.bandwidth()}` : '0'
+          return d.state === 'OVERALL' ? `${xScale(d.contested / d[toggleSwitch])} ${yScale4.bandwidth()}` : '0'
         } else {
-          return d.state === 'TOTAL' ? `${xScale(d.contested / d[toggleSwitch]) + yScale4.bandwidth() + xScale(d.contested / d[toggleSwitch])} ${yScale4.bandwidth()}` : '0'
+          return d.state === 'OVERALL' ? `${xScale(d.contested / d[toggleSwitch]) + yScale4.bandwidth() + xScale(d.contested / d[toggleSwitch])} ${yScale4.bandwidth()}` : '0'
         }
       })
 
@@ -50,7 +50,7 @@ d3.selectAll('#supreme-map .toggle')
       .style('stroke-dasharray', (d) => {
         let toggleSwitch = document.querySelector('#supreme-map .toggle.active').className.includes('all') ? 'seats' : 'up'
 
-        return d.state === 'TOTAL' ? `${xScale(d.notContested / d[toggleSwitch])} ${yScale4.bandwidth()} ${xScale(d.notContested / d[toggleSwitch]) + yScale4.bandwidth() + 3} 0` : '0'
+        return d.state === 'OVERALL' ? `${xScale(d.notContested / d[toggleSwitch])} ${yScale4.bandwidth()} ${xScale(d.notContested / d[toggleSwitch]) + yScale4.bandwidth() + 3} 0` : '0'
       })
 
     svg4.selectAll('#supreme-map .bar.not-up')
@@ -133,10 +133,10 @@ function renderSupreme() {
         .attr('class', (d) => {
           return `bar contested ${d.state.toLowerCase().replaceAll(' ', '-').replaceAll('&', '-')}`
         })
-        .style("fill", '#6ba292')
+        .style("fill", '#707c9c')
         .style('stroke', 'black')
-        .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.contested / d[toggle])} ${yScale4.bandwidth()}` : '0')
-        .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
+        .style('stroke-dasharray', d => d.state === 'OVERALL' ? `${xScale(d.contested / d[toggle])} ${yScale4.bandwidth()}` : '0')
+        .style('stroke-width', d => d.state === 'OVERALL' ? '3px' : '0')
         .on('mouseover mousemove', (d) => {
           return mouseover('supreme', d)
         })
@@ -159,10 +159,10 @@ function renderSupreme() {
         .attr('class', (d) => {
           return `bar not-contested ${d.state.toLowerCase().replaceAll(' ', '-').replaceAll('&', '-')}`
         })
-        .style("fill", '#ed6a5a')
+        .style("fill", '#d5563a')
         .style('stroke', 'black')
-        .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.notContested / d[toggle])} ${yScale4.bandwidth()} ${xScale(d.notContested / d[toggle]) + yScale4.bandwidth() + 3} 0` : '0')
-        .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
+        .style('stroke-dasharray', d => d.state === 'OVERALL' ? `${xScale(d.notContested / d[toggle])} ${yScale4.bandwidth()} ${xScale(d.notContested / d[toggle]) + yScale4.bandwidth() + 3} 0` : '0')
+        .style('stroke-width', d => d.state === 'OVERALL' ? '3px' : '0')
         .on('mouseover mousemove', (d) => {
           return mouseover('supreme', d)
         })
@@ -188,8 +188,8 @@ function renderSupreme() {
         .style("fill", '#d3d3d3')
         .style('display', d => d.toggle === 'up' ? 'none' : 'block')
         .style('stroke', 'black')
-        .style('stroke-dasharray', d => d.state === 'TOTAL' ? `${xScale(d.notUp / d[toggle]) + yScale4.bandwidth() + xScale(d.notUp / d[toggle]) } ${yScale4.bandwidth()}` : '0')
-        .style('stroke-width', d => d.state === 'TOTAL' ? '3px' : '0')
+        .style('stroke-dasharray', d => d.state === 'OVERALL' ? `${xScale(d.notUp / d[toggle]) + yScale4.bandwidth() + xScale(d.notUp / d[toggle]) } ${yScale4.bandwidth()}` : '0')
+        .style('stroke-width', d => d.state === 'OVERALL' ? '3px' : '0')
         .on('mouseover mousemove', (d) => {
           return mouseover('supreme', d)
         })
@@ -207,15 +207,15 @@ function renderSupreme() {
         .attr("y", function(d) {
           return yScale4(d.state) + yScale4.bandwidth() - yScale4.bandwidth() * .3
         })
-        .text(d => `${d.state}`)
+        .text(d => regWidth < 640 ? `${d.abbr}${d.asterisk}` : `${d.state}${d.asterisk}`)
         .attr('class', (d) => {
           return `bar-label ${d.state.toLowerCase().replaceAll(' ', '-').replaceAll('&', '-')}`
         })
         .attr('text-anchor', 'start')
-        .attr('font-size', '10pt')
-        .attr('fill', 'black')
+        .attr('font-size', d => regWidth < 640 ? '9pt' : '10pt')
+        .attr('fill', 'white')
         .style('pointer-events', 'none')
-        .style('font-weight', d => d.state === 'TOTAL' ? 'bold' : 'normal')
+        .style('font-weight', d => d.state === 'OVERALL' ? 'bold' : 'normal')
         .on('mouseover mousemove', (d) => {
           return mouseover('supreme', d)
         })
@@ -262,7 +262,7 @@ function renderSupreme() {
         .call(wrapText, (margin.left))
         .data(csv)
         .style('font-weight', (d) => {
-          return d.state === 'TOTAL' ? 'bold' : 'regular'
+          return d.state === 'OVERALL' ? 'bold' : 'regular'
         })
         //
         // svg4.selectAll('.y-axis .tick text tspan')
